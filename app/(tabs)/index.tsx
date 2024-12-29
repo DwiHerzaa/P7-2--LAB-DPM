@@ -129,48 +129,95 @@ const TodosScreen = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: Constants.statusBarHeight,
+        justifyContent: 'flex-start',
+        paddingHorizontal: 16,
+        backgroundColor: 'transparent',
+    },
+    background: {
+        ...StyleSheet.absoluteFillObject,
+        position: 'absolute',
+        zIndex: -1,
+        borderRadius: 10,
+    },
+    innerContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: 1,
+        backgroundColor: 'transparent',
     },
     title: {
-        marginTop: 16,
-        marginHorizontal: 16,
+        fontSize: 30,
+        fontWeight: 'bold',
+        marginTop: 20,
+        color: '#E6E6E6',
+        textAlign: 'center',
     },
     listContainer: {
-        padding: 16,
+        paddingVertical: 10,
     },
     card: {
         marginBottom: 16,
-        borderRadius: 8,
+        borderRadius: 10,
+        backgroundColor: '#4F4F4F',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.2,
+        shadowRadius: 6,
+        elevation: 5,
+    },
+    cardTitle: {
+        fontSize: 20,
+        fontWeight: '500',
+        color: '#FFFFFF',
     },
     description: {
+        color: '#CCCCCC',
+        fontSize: 16,
         marginTop: 8,
-        color: 'gray',
+    },
+    deleteButton: {
+        backgroundColor: '#FF6347',
+        borderRadius: 5,
     },
     fab: {
         position: 'absolute',
         right: 16,
         bottom: 16,
+        backgroundColor: '#333333',
+        elevation: 6,
     },
     inputContainer: {
         padding: 16,
-        borderTopLeftRadius: 16,
-        borderTopRightRadius: 16,
+        backgroundColor: '#555555',
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
         elevation: 5,
     },
     input: {
         marginBottom: 12,
     },
     addButton: {
-        marginTop: 12,
+        marginTop: 16,
     },
     cancelButton: {
         marginTop: 8,
+        backgroundColor: '#444444',
     },
     loading: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
     },
+    dialog: {
+        backgroundColor: '#333333',
+        borderRadius: 10,
+    },
+    dialogButton: {
+        backgroundColor: '#28a745',
+        borderRadius: 5,
+    },
 });
+
 
 export default TodosScreen;

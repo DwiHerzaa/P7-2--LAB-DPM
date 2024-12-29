@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {StyleSheet} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, View, ScrollView } from 'react-native';
 import {
     ActivityIndicator,
     Button,
@@ -12,10 +12,10 @@ import {
 } from 'react-native-paper';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {Stack, useLocalSearchParams, useRouter} from 'expo-router';
+import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import API_URL from '@/config/config';
-import {ThemedView} from '@/components/ThemedView';
-import {useTodos} from '@/context/TodoContext';
+import { ThemedView } from '@/components/ThemedView';
+import { useTodos } from '@/context/TodoContext';
 
 type Todo = {
     _id: string;
@@ -95,28 +95,34 @@ const TodoDetailScreen = () => {
         <PaperProvider>
             <Stack.Screen options={{ title: 'Todo Detail' }} />
             <ThemedView style={styles.container}>
-                <Card style={styles.card} elevation={3}>
-                    <Card.Content>
-                        <TextInput
-                            label="Title"
-                            value={title}
-                            onChangeText={setTitle}
-                            style={styles.input}
-                            mode="outlined"
-                        />
-                        <TextInput
-                            label="Description"
-                            value={description}
-                            onChangeText={setDescription}
-                            style={styles.input}
-                            mode="outlined"
-                            multiline
-                        />
-                        <Button mode="contained" onPress={handleUpdateTodo} style={styles.updateButton}>
-                            Update Todo
-                        </Button>
-                    </Card.Content>
-                </Card>
+                {/* Background */}
+                <View style={styles.background} />
+                
+                {}
+                <ScrollView contentContainerStyle={styles.contentContainer}>
+                    <Card style={styles.card} elevation={3}>
+                        <Card.Content>
+                            <TextInput
+                                label="Title"
+                                value={title}
+                                onChangeText={setTitle}
+                                style={styles.input}
+                                mode="outlined"
+                            />
+                            <TextInput
+                                label="Description"
+                                value={description}
+                                onChangeText={setDescription}
+                                style={styles.input}
+                                mode="outlined"
+                                multiline
+                            />
+                            <Button mode="contained" onPress={handleUpdateTodo} style={styles.updateButton}>
+                                Update Todo
+                            </Button>
+                        </Card.Content>
+                    </Card>
+                </ScrollView>
                 <Portal>
                     <Dialog visible={visible} onDismiss={hideDialog}>
                         <Dialog.Title>Success</Dialog.Title>
@@ -137,6 +143,19 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 16,
+        position: 'relative',
+    },
+    background: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'lightgray',
+        zIndex: -1, 
+    },
+    contentContainer: {
+        paddingBottom: 80,
     },
     card: {
         marginBottom: 16,
